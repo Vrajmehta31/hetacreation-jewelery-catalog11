@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heta's Creation - Imitation Jewelry & Handcrafted Envelopes</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #d4af37; /* Elegant Gold */
+            --bg-color: #f9f9f9;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Top Navigation Bar */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo-area h1 {
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            color: var(--accent-color);
+        }
+
+        .logo-area p {
+            font-size: 0.8rem;
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        .nav-cart {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-cart:hover {
+            transform: scale(1.05);
+            background-color: #fff;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('dbeb4186-ab16-490d-9cb1-f514c517bb56.jpeg') no-repeat center center/cover;
+            height: 40vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        /* Main Storefront Layout */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            background-color: #eaeaea;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #c0392b;
+            margin-bottom: 1rem;
+        }
+
+        /* Controls inside Card */
+        .product-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .qty-input {
+            width: 60px;
+            padding: 0.4rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .btn-add-card {
+            flex-grow: 1;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .btn-add-card:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        /* Footer & Contact info */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 1rem 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-section h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Modal / Checkout Popup Styling */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 2000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.6); 
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 1.5rem;
+            top: 1rem;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        .cart-summary-list {
+            margin: 1rem 0;
+            max-height: 200px;
+            overflow-y: auto;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .cart-summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .payment-gateway-box {
+            background-color: #fffde7;
+            border: 2px dashed var(--accent-color);
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .qr-placeholder {
+            width: 150px;
+            height: 150px;
+            background-color: #ddd;
+            margin: 1rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #555;
+            border: 1px solid #bbb;
+        }
+
+        .btn-checkout-submit {
+            width: 100%;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            font-size: 1.1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        .btn-checkout-submit:hover {
+            background-color: #219653;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="logo-area">
+            <h1>Heta's Creation</h1>
+            <p>Imitation Jewelry & Handcrafted Envelopes</p>
+        </div>
+        <!-- Only top of the bar add to cart option present -->
+        <div class="nav-cart" onclick="openCartModal()">
+            🛒 View Cart (<span id="cart-count">0</span>)
+        </div>
+    </header>
+
+    <!-- Hero / Showcase -->
+    <section class="hero">
+        <h2>Exquisite Handcrafted Designs</h2>
+        <p>Explore our exclusive Instagram portfolio tailored just for you.</p>
+    </section>
+
+    <!-- Main Store Section -->
+    <main class="container">
+        <h2 class="section-title">Our Collection</h2>
+        
+        <div class="product-grid" id="product-container">
+            <!-- Dynamic compilation of all provided image files as distinct items -->
+        </div>
+    </main>
+
+    <!-- Modal Layout for Payment Gateway & Cart Checkout Details -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeCartModal()">&times;</span>
+            <h3>Your Selected Items</h3>
+            
+            <div class="cart-summary-list" id="cartSummaryList">
+                <p style="color: #777;">Your cart is empty.</p>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 1.2rem; margin-top: 1rem;">
+                <span>Total Amount:</span>
+                <span>₹<span id="cartTotal">0</span></span>
+            </div>
+
+            <!-- Payment Gateway Section Integration -->
+            <div class="payment-gateway-box">
+                <h4>🔒 Integrated Payment Gateway</h4>
+                <p style="font-size: 0.85rem; margin-top: 0.3rem;">Scan QR code or use the link below to finalize remittance</p>
+                
+                <!-- QR Code Dynamic Box Placeholder -->
+                <div class="qr-placeholder">
+                    [ insert UPI QR Code ]
+                </div>
+                
+                <a href="https://rzp.io/l/hetascreation" target="_blank" style="color: #0066cc; font-size: 0.9rem; font-weight: bold; text-decoration: underline;">
+                    Click Here to Pay via Secure Payment Link
+                </a>
+            </div>
+
+            <button class="btn-checkout-submit" onclick="processOrder()">Confirm & Send Order Details</button>
+        </div>
+    </div>
+
+    <!-- Contact & Footer Section Info -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Heta's Creation specializes in premium imitation jewelry sets, elegant traditional jhumkas, neckpieces, and custom-styled handcrafted envelopes for all festive celebrations.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Details</h3>
+                <p>📞 Phone/Mobile: <strong>9825244110</strong></p>
+                <p>✉️ Email: <a href="mailto:hetakmehta10@gmail.com">hetakmehta10@gmail.com</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Instagram Portfolio</h3>
+                <p>📸 Follow us on Instagram for updates:</p>
+                <a href="https://www.instagram.com/hetascreation" target="_blank" style="font-weight: bold; color: var(--accent-color);">
+                    @hetascreation
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Heta's Creation. All Rights Reserved. Crafted with elegance.
+        </div>
+    </footer>
+
+    <script>
+        // Data list mappings referencing the uploaded image assets provided
+        const products = [
+            { id: 1, name: "Premium Mirror Oxidized Choker Necklace Set", price: 1250, img: "dbeb4186-ab16-490d-9cb1-f514c517bb56.jpeg" },
+            { id: 2, name: "Elegant Pink Stone Jhumka Pendant Set", price: 850, img: "b21aae16-5465-4d29-83b4-055fe2819c31.jpeg" },
+            { id: 3, name: "Handpainted Yellow Meenakari Square Earrings", price: 450, img: "10227e9c-4c29-4386-9480-09c7df3c69f4.jpeg" },
+            { id: 4, name: "Classic Clear Crystal Jhumka Dangles", price: 650, img: "97d8b2e0-fb32-4b85-a017-1af5dbc68af4.jpeg" },
+            { id: 5, name: "Elegant Soft Pink Stone Droplet Jhumkas", price: 550, img: "2dc5f80c-ce3c-453a-a2bd-d343427de459.jpeg" },
+            { id: 6, name: "Vintage Oval Pearl & Crystal Stud Earrings", price: 390, img: "3bb15488-b908-47b8-8048-a3e0470cbde9.jpeg" },
+            { id: 7, name: "Sun Motif Traditional Silver Oxidized Jhumkas", price: 480, img: "6bcfdb8e-8df3-415b-946a-97b513beeb6c.jpeg" },
+            { id: 8, name: "Amethyst Purple Accent Hanging Jhumkas", price: 520, img: "6e1c4dc7-d5f1-4398-a794-38d4ccc11c24.jpeg" },
+            { id: 9, name: "Crescent Chandelier Statement Jhumka Suite", price: 790, img: "8ae2eca9-272d-4721-8ace-439261257ccb.jpeg" }
+        ];
+
+        // Storage tracking cart contents internally
+        let cart = {};
+
+        // Generate dynamic items inside the storefront portfolio grid
+        function renderProducts() {
+            const container = document.getElementById('product-container');
+            container.innerHTML = "";
+            
+            products.forEach(prod => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <img src="${prod.img}" alt="${prod.name}" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-title">${prod.name}</h3>
+                            <div class="product-price">₹${prod.price}</div>
+                        </div>
+                        <div class="product-controls">
+                            <!-- Quantity adjustment state button and inputs -->
+                            <input type="number" min="1" value="1" id="qty-${prod.id}" class="qty-input">
+                            <button class="btn-add-card" onclick="addToCart(${prod.id})">Add To Cart</button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Logic processing additions into the Top Cart component object
+        function addToCart(productId) {
+            const qtyInput = document.getElementById(`qty-${productId}`);
+            const quantity = parseInt(qtyInput.value) || 1;
+            
+            if (cart[productId]) {
+                cart[productId] += quantity;
+            } else {
+                cart[productId] = quantity;
+            }
+            
+            // Reset quantity item selector counter value state inside the view card layout
+            qtyInput.value = 1;
+            updateCartCount();
+            alert("Item successfully added to your cart!");
+        }
+
+        // Counts total items currently added
+        function updateCartCount() {
+            let totalItems = 0;
+            for (let id in cart) {
+                totalItems += cart[id];
+            }
+            document.getElementById('cart-count').innerText = totalItems;
+        }
+
+        // Generate viewable summaries context logic when toggling the payment portal popovers
+        function openCartModal() {
+            const modal = document.getElementById('cartModal');
+            const summaryList = document.getElementById('cartSummaryList');
+            const totalSpan = document.getElementById('cartTotal');
+            
+            summaryList.innerHTML = "";
+            let grandTotal = 0;
+            let hasItems = false;
+
+            for (let id in cart) {
+                const product = products.find(p => p.id == id);
+                if (product) {
+                    hasItems = true;
+                    const itemCost = product.price * cart[id];
+                    grandTotal += itemCost;
+                    
+                    const itemRow = document.createElement('div');
+                    itemRow.className = 'cart-summary-item';
+                    itemRow.innerHTML = `
+                        <span>${product.name} <strong>(x${cart[id]})</strong></span>
+                        <span>₹${itemCost}</span>
+                    `;
+                    summaryList.appendChild(itemRow);
+                }
+            }
+
+            if (!hasItems) {
+                summaryList.innerHTML = '<p style="color: #777; text-align:center;">Your cart is empty.</p>';
+            }
+
+            totalSpan.innerText = grandTotal;
+            modal.style.display = "flex";
+        }
+
+        function closeCartModal() {
+            document.getElementById('cartModal').style.display = "none";
+        }
+
+        function processOrder() {
+            let total = document.getElementById('cartTotal').innerText;
+            if(total == "0") {
+                alert("Please add items to your cart before checking out.");
+                return;
+            }
+            alert(`Thank you for your order! Please complete your transfer of ₹${total} via the custom QR code or Payment Link options displayed.`);
+            cart = {};
+            updateCartCount();
+            closeCartModal();
+        }
+
+        // Run application setup context pipeline render on initial mount
+        renderProducts();
+    </script>
+</body>
+</html>
